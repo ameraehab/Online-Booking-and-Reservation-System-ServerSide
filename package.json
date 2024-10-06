@@ -1,0 +1,22 @@
+{
+  "name": "online-booking-and-reservation-system-serverside",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "express-validator": "^7.2.0",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.7.0",
+    "validator": "^13.12.0"
+  }
+}
