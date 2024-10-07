@@ -9,12 +9,16 @@ exports.getAllUsers = async(req, res)=>{
 
 exports.getUser = async (req,res)=>{
 
-    const user  = await User.findById(req.params.id)
-    if(!user){
-        return res.status(404).json({error : "user not founded"})
+    try {
+        const user  = await User.findById(req.params.id)
+        if(!user){
+            return res.status(404).json({error : "user not founded"})
+        }
+        res.json(user)    
+    } catch (error) {
+        return res.status(400).json({error : "invalid object id "})
+        
     }
-    res.json(user)
-    
 }
 
 
@@ -30,19 +34,19 @@ exports.addUser = async (req,  res)=>{
     
 }
 
-exports.updateUser = (req, res)=>{
-    const id  = +req.params.id  ;
-    let product  = products.find((product) => product.id === id )
-    if(!product){
-        return res.status(404).json({error : "product not found "})
+exports.updateUser = async (req, res)=>{
+    const id  = req.params.id
+    try {
+        const updatedUser = await User.updateOne({_id : id} , {$set : {...req.body}})
+        res.status(200).json(updatedUser) ;
+        
+    } catch (error) {
+        return res.status(400).json({error : error})
     }
-    product  = {...product , ...req.body } ;
-    res.status(200).json(product) ;
 }
 
-exports.deleteUser =  (req, res)=>{
-    const id  = +req.params.id  ;
-    products = products.filter((product)=>product.id !== id ) ;
-    res.status(200).json(products) ;
+exports.deleteUser = async  (req, res)=>{
+    const deletedUser  = await User.deleteOne({_id : req.params.id})
+    res.status(200).json({sucess : true }) ;
 }
 
