@@ -14,6 +14,18 @@ const resturantsSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-
+    imageUrl: {
+        type: String,
+    },
+    openTime: {
+        type: Number,
+        required: true,
+    },
+    closeTime: {
+        type: Number,
+        required: true,
+    },
 
 })
+
+module.exports = mongoose.model('Resturants', resturantsSchema)
