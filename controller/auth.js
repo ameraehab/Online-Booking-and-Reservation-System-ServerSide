@@ -1,14 +1,19 @@
 const User = require('../models/userModel')
 
-const register = ()=>{
+const register = () => {
 
 }
 
-const login  = ()=>{
+const login = () => {
 
 }
 
-module.exports ={
-    register ,
+module.exports = {
+    register,
     login
 }
+
+
+
+
+
