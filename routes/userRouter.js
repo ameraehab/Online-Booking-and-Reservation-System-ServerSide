@@ -1,13 +1,13 @@
 const express = require('express') ;
-
-const userController = require('../controller/userController')
+const userController = require('../controller/userController');
+const { validationSchema } = require('../middlware/validationSchema');
 
 const router  = express.Router() ;
 
 
 router.route('/')
     .get(userController.getAllUsers)
-    .post(userController.addUser)
+    .post(validationSchema() , userController.addUser)
 
 
 router.route('/:id')
