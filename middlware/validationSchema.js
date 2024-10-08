@@ -1,13 +1,14 @@
 const {body} = require('express-validator')
 exports.validationSchema = ()=>{
    return  [
-        body('productName')
+        body('fullName')
             .notEmpty()
-            .withMessage('name is required')
-            .isLength({min : 3 })
-            .withMessage('min length is 3 '),
-        body('price')
+            .withMessage('name is required'),
+        body('email')
             .notEmpty()
-            .withMessage('price is required')
+            .withMessage('email is required') ,
+        body('password')
+            .notEmpty() 
+            .withMessage('password is required')    
     ]
 }

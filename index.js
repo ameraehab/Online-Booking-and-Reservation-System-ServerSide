@@ -1,13 +1,13 @@
+require('dotenv').config()
 const express = require('express')
 const mongoose  = require('mongoose')
-
 const auth = require('./routes/auth') ;
 const userRoute = require('./routes/userRouter')
 
 const app = express() ;
-const port = 3000 ;
+const port = process.env.PORT ;
 
-const url = "mongodb+srv://yasmeenayr:tableBooky2024@booking-system.who5p.mongodb.net/tableBooky?retryWrites=true&w=majority&appName=Booking-System" ;
+const url = process.env.MONGO_URL;
 
 mongoose.connect(url).then(()=>{
     console.log('mongodb server started');
